@@ -10,8 +10,6 @@ package Nim_Thy;
 
 import java.util.Random;
 import java.util.Scanner;
-import Nim_Emely.Board;
-import Nim_Anh.Move;
 
 public class Player {
 	// Create the random
