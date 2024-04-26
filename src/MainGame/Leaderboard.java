@@ -49,4 +49,13 @@ public class Leaderboard{
         for (Score score : top_n) 
             System.out.println(score);
     }
+
+    public boolean lookForPlayer(String name){
+        for (Score score : scores){
+            if(score.getPlayerName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
