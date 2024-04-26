@@ -9,6 +9,8 @@ package Nim_Thy;
 //************************************************************
 
 import java.util.Scanner;
+import Nim_Emely.Board;
+import Nim_Anh.Move;
 
 public class HumanPlayer extends Player{
 	// Constructor
