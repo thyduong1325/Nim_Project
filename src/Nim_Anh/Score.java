@@ -33,4 +33,8 @@ public class Score {
     public void setGameID(int gameID) {
         this.gameID = gameID;
     }
+
+    public String toString(){
+        return "Player Name: " + playerName + "\nScore: " + score + "\nGameID: " + gameID;
+    }
 }
