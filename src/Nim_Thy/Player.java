@@ -9,7 +9,6 @@ package Nim_Thy;
 //************************************************************
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Player {
 	// Create the random
