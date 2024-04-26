@@ -1,7 +1,7 @@
 package Nim_Thy;
 
 //************************************************************
-// File Name: AIPlayer1.java            Author: Uyen Thy Duong
+// File Name: AIPlayer.java            Author: Uyen Thy Duong
 //
 // Purpose: A subclass of Player that represents an 
 // AI-controlled player. This class includes methods for 
