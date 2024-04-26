@@ -22,7 +22,7 @@ public class HumanPlayer extends Player{
 	public Move makeMove(Board board, Scanner scanner) {
         System.out.println("Your turn, " + super.getPlayerName() + ":");
         
-        board.displayBoard();
+        board.display();
         
         System.out.print("Enter heap index: ");
         int heapIndex = scanner.nextInt();

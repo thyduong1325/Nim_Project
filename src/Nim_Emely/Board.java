@@ -42,4 +42,9 @@ public class Board {
         }
         return true;  // If no heaps have objects, return true indicating the game is over.
     }
+
+    // Getter methods
+    public ArrayList<Integer> getHeaps(){
+        return heaps;
+    }
 }
