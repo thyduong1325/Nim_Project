@@ -35,6 +35,6 @@ public class Score {
     }
 
     public String toString(){
-        return "Player Name: " + playerName + "\nScore: " + score + "\nGameID: " + gameID;
+        return "Player Name: " + playerName + "\nScore: " + score + "\nGameID: " + gameID + "\n";
     }
 }

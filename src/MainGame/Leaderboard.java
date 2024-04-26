@@ -7,6 +7,10 @@ import Nim_Anh.Score;
 public class Leaderboard{
     private ArrayList<Score> scores;
 
+    public Leaderboard() {
+        this.scores = new ArrayList<>();
+    }
+
     public void addScore(Score score){
         this.scores.add(score);
     }
@@ -40,15 +44,9 @@ public class Leaderboard{
         }
     }
 
-    public static void main(String[] args) {
-        Leaderboard leaderboard = new Leaderboard();
-        leaderboard.addScore(new Score("Thy", 100, 1234));
-        leaderboard.addScore(new Score("Anh", 200, 5678));
-        leaderboard.addScore(new Score("Emely", 300, 1357));
-        leaderboard.addScore(new Score("AAAA", 400, 2468));
-        ArrayList<Score> top3 = leaderboard.getTopScore(3);
-        for (Score score : top3) 
+    public void display(int numScores) {
+        ArrayList<Score> top_n = getTopScore(numScores);
+        for (Score score : top_n) 
             System.out.println(score);
-        
     }
 }
