@@ -10,6 +10,10 @@ import Nim_Emely.*;
 import Nim_Thy.*;
 
 public class NimGameTest {
+    // Main leaderboard in memory
+    private static Leaderboard leaderboard;
+
+    // Main game
     public static void main(String[] args) {
         // Create the scanner
         Scanner scan = new Scanner(System.in);
@@ -41,7 +45,37 @@ public class NimGameTest {
 
         // Option 1: New Game
         if (option.equalsIgnoreCase("N")){
+            // Start a new game
+            Game maiGame = new Game(leaderboard);
 
+            // Create players
+            maiGame.createNewPlayers();
+
+            /*
+                This loop is the game
+                if continue playing is true the game will repeat using same players
+                At the begining of each game you can select who first player is.
+            */
+            while(continuePlaying){
+                //Selecting first Player
+                System.out.print("Choose the player for the first turn (1 or 2): ");
+                int firstTurn = scan.nextInt();
+                // if User press Cancel break out of the game
+                if(firstTurn == null){
+                    break;
+                }
+                // Creating the New Game and sending players and First turn
+                Nim newGame = new Nim(players,firstTurn);
+                //winner is returned as a String
+                String winner = newGame.play();
+                //Handeling a cancel
+                if(winner == null){
+                    break;
+                }
+                System.out.println("\n\nWinner is: " + winner );
+                // Asking to play again
+                continuePlaying = playAgain();
+            }
         }
 
         // Option 2: Resume Game
@@ -56,54 +90,6 @@ public class NimGameTest {
             System.out.println("Created by Anh, Emely, Thy!");
         }
 
-
-
-
-
-
-
-
-
-
-        
-        //Creation of a 2 players empty array
-        Player[] players = new Player[2]; 
-        boolean continuePlaying = true;
-        
-        //Using JOption Panels to get information about type
-        //of players and their names
-        players[0] = createPlayer();
-        players[1] = createPlayer();
-        //quit game if cancel if pressed
-        if(players[0] == null || players[1] == null){
-            continuePlaying = false; 
-        }
-        /*
-            This loop is the game
-            if continue playing is true the game will repeat using same players
-            At the begining of each game you can select who first player is.
-        */
-        while(continuePlaying){
-            //Selecting first Player
-            String firstTurn = selectFirstPlayer(players);
-            // if User press Cancel break out of the game
-            if(firstTurn == null){
-                break;
-            }
-            // Creating the New Game and sending players and First turn
-            Nim newGame = new Nim(players,firstTurn);
-            //winner is returned as a String
-            String winner = newGame.play();
-            //Handeling a cancel
-            if(winner == null){
-                break;
-            }
-            System.out.println("\n\nWinner is: " + winner );
-            // Asking to play again
-            continuePlaying = playAgain();
-        }
-          
-        
         
     }
     
