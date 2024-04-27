@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-import MainGame.*;
 import Nim_Anh.*;
 import Nim_Emely.*;
 import Nim_Thy.*;
@@ -41,17 +40,17 @@ public class NimGameTest {
         }
 
         // Option 1: New Game
-        if (option.equals("N")){
+        if (option.equalsIgnoreCase("N")){
 
         }
 
         // Option 2: Resume Game
-        else if (option.equals("R")){
+        else if (option.equalsIgnoreCase("R")){
 
         }
 
         // Option 3: Quit
-        else if (option.equals("Q")){
+        else if (option.equalsIgnoreCase("Q")){
             System.out.println("Thank you for playing!");
             System.out.println("CISC 230 project 1.");
             System.out.println("Created by Anh, Emely, Thy!");
@@ -108,37 +107,7 @@ public class NimGameTest {
         
     }
     
-    /**
-     * This function ask the user to select a type of Player and assign a name.
-     * If null is returned in name or type this function will return as result.
-     * @return A player object created base on the selection of user.
-    */
-    public static Player createPlayer(){
-        //Options array of players
-        String[] typePlayers = {"Human","BelowAverageComputer","SmartComputer"};
-        
-        //Getting user input for Player
-        String type = (String)JOptionPane.showInputDialog(null,"Select Player:","Create Player",JOptionPane.QUESTION_MESSAGE,null,typePlayers,typePlayers[0]);
-        String name = JOptionPane.showInputDialog(type +"'s name: ");
-        
-        //Return a null if cancel
-        if(type == null || name == null){
-            return null;
-        }
-        
-        //Depending on type selected a new type of Player will be created
-        if(type.equals(typePlayers[0])){
-            return  new Human(name); 
-        }
-        if(type.equals(typePlayers[1])){
-            return  new BelowAverageComputer(name);
-        }
-        if(type.equals(typePlayers[2])){
-            return  new SmartComputer(name);
-        }else{
-            return null;
-        }
-    }
+  
     
     /**
      * 
