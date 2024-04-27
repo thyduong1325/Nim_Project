@@ -1,70 +1,88 @@
 package MainGame;
 
 import java.util.ArrayList;
-
-import Nim_Anh.Score;
+import Nim_Thy.Player;
 
 public class Leaderboard{
-    private ArrayList<Score> scores;
+    private ArrayList<Player> players;
 
     public Leaderboard() {
-        this.scores = new ArrayList<>();
+        this.players = new ArrayList<Player>();
+    }
+    
+    // Getter methods
+    public ArrayList<Player> getPlayers(){
+    	return players;
     }
 
-    public void addScore(Score score){
-        this.scores.add(score);
+    public void addHumanPlayer(Player Player){
+        this.players.add(Player);
     }
 
-    public ArrayList<Score> getTopScore(int numScores) {
-        ArrayList<Score> topArray = new ArrayList<>(scores);
-        sortScoresDescending(topArray);
-        if (numScores < topArray.size()) {
-            removeScoresAfterIndex(topArray, numScores);
+    public ArrayList<Player> getTopPlayer(int numPlayers) {
+        ArrayList<Player> topArray = new ArrayList<>(players);
+        sortHumanPlayersDescending(topArray);
+        if (numPlayers < topArray.size()) {
+            removePlayersAfterIndex(topArray, numPlayers);
         }
         return topArray;
     }
 
-    private void sortScoresDescending(ArrayList<Score> scores) {
-        int n = scores.size();
+    private void sortHumanPlayersDescending(ArrayList<Player> HumanPlayers) {
+        int n = HumanPlayers.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (scores.get(j).getScore() < scores.get(j + 1).getScore()) {
-                    Score temp = scores.get(j);
-                    scores.set(j, scores.get(j + 1));
-                    scores.set(j + 1, temp);
+                if (HumanPlayers.get(j).getScoreObject().getScore() < HumanPlayers.get(j + 1).getScoreObject().getScore()) {
+                	Player temp = HumanPlayers.get(j);
+                    HumanPlayers.set(j, HumanPlayers.get(j + 1));
+                    HumanPlayers.set(j + 1, temp);
                 }
             }
         }
     }
 
-    private void removeScoresAfterIndex(ArrayList<Score> scores, int index) {
-        int size = scores.size();
+    private void removePlayersAfterIndex(ArrayList<Player> HumanPlayers, int index) {
+        int size = HumanPlayers.size();
         for (int i = size - 1; i >= index; i--) {
-            scores.remove(i);
+            HumanPlayers.remove(i);
         }
     }
 
-    public void display(int numScores) {
-        ArrayList<Score> top_n = getTopScore(numScores);
-        for (Score score : top_n) 
-            System.out.println(score);
+    public void display(int numHumanPlayers) {
+    	System.out.println("---------------------------------------");
+        System.out.println("              LEADERBOARD");
+        System.out.println("---------------------------------------");
+        System.out.println();
+        ArrayList<Player> top_n = getTopPlayer(numHumanPlayers);
+        for (int rank = 1 ; rank <= top_n.size() ; rank++) 
+        	System.out.println("Rank " + rank + top_n.get(rank - 1).getScoreObject());
     }
 
     public boolean lookForOldPlayer(String name){
-        for (Score score : scores){
-            if(score.getPlayerName().equals(name)){
+        for (Player player : players){
+            if(player.getPlayerName().equals(name)){
                 return true;
             }
         }
         return false;
     }
-
-    public boolean lookForOldGameId(int id){
-        for (Score score : scores){
-            if(score.getGameID() == id){
-                return true;
+    
+	public int lookForOldPlayer(String name, int HumanPlayerId){
+	        for (int i = 0 ; i < players.size() ; i++){
+	            if(players.get(i).getPlayerName().equals(name) && players.get(i).getPlayerId() == HumanPlayerId){
+	                return i;
+	            }
+	        }
+	        return -1;
+	    }
+  
+    
+    public int lookForOldGameID(int id){
+    	for (int i = 0 ; i < players.size() ; i++){
+            if(players.get(i).getScoreObject().getGameID() == id){
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 }
