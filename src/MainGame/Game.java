@@ -217,7 +217,7 @@ public class Game{
         }
     }
       
-      private void displayGameInfo(Player first, int HeapSize){
+    private void displayGameInfo(Player first, int HeapSize){
           System.out.println("*****************************************");
           System.out.println("\t\tNim Game\n");
           for(int index = 0; index < players.length; index++){
@@ -226,6 +226,27 @@ public class Game{
           System.out.println("First Turn: "+ first.getPlayerName());
           System.out.println("Heap Size: "+ HeapSize);
           System.out.println("*****************************************");   
-      }  
+    } 
+
+    public boolean playAgain(Scanner scan){
+        // Ask the user
+        System.out.print("Play again? (Y or N): ");
+        String option = scan.next();
+
+        // Check the input
+        while (!option.equalsIgnoreCase("Y") || !option.equalsIgnoreCase("N")){
+            System.out.println("Invalid input!");
+            System.out.println();
+            System.out.print("Play again? (Y or N): ");
+            option = scan.next();
+        }
+
+        // Condition to return
+        if (option.equalsIgnoreCase("Y"))
+            return true;
+        else
+            return false;
+
+    }
 }
 

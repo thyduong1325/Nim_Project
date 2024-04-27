@@ -1,13 +1,6 @@
 package MainGame;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
-import Nim_Anh.*;
-import Nim_Emely.*;
-import Nim_Thy.*;
 
 public class NimGameTest {
     // Main leaderboard in memory
@@ -28,15 +21,17 @@ public class NimGameTest {
         System.out.println();
         
         // Display the Main Menu
+        System.out.println("              Main Menu");
+        System.out.println("---------------------------------------");
         System.out.println("New Game (enter \"N\")");
         System.out.println("Resume Game (enter \"R\")");
         System.out.println("Quit (enter \"Q\")");
-        System.out.println("----------------------------");
+        System.out.println("---------------------------------------");
         System.out.print("Enter your option: ");
         String option = scan.next();
 
         // Check user input
-        while (!option.equals("N") && !option.equals("R") && !option.equals("Q")){
+        while (!option.equalsIgnoreCase("N") && !option.equalsIgnoreCase("R") && !option.equalsIgnoreCase("Q")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Enter your option: ");
@@ -49,7 +44,7 @@ public class NimGameTest {
             Game mainGame = new Game(leaderboard);
 
             // Create players
-            mainGame.createNewPlayers();
+            mainGame.createNewPlayers(leaderboard);
 
             /*
                 This loop is the game
@@ -75,7 +70,6 @@ public class NimGameTest {
                 else
                     mainGame.startGame(mainGame.getPlayers()[1].getPlayerName());
                 
-;
                 // Winner is returned as a String
                 String winner = mainGame.play();
                 
@@ -86,7 +80,7 @@ public class NimGameTest {
                 System.out.println("\n\nWinner is: " + winner );
                 
                 // Asking to play again
-                continuePlaying = playAgain(scan);
+                continuePlaying = mainGame.playAgain(scan);
             }
         }
 
@@ -102,30 +96,6 @@ public class NimGameTest {
             System.out.println("Created by Anh, Emely, Thy!");
         }
 
-        
     }
-    
 
-    public static boolean playAgain(Scanner scan){
-        // Ask the user
-        System.out.print("Play again? (Y or N): ");
-        String option = scan.next();
-
-        // Check the input
-        while (!option.equalsIgnoreCase("Y") && !option.equalsIgnoreCase("N")){
-            System.out.println("Invalid input!");
-            System.out.println();
-            System.out.print("Play again? (Y or N): ");
-            option = scan.next();
-        }
-
-        // Condition to return
-        if (option.equalsIgnoreCase("Y"))
-            return true;
-        else if (option.equalsIgnoreCase("N"))
-            return false;
-    
-    }
-    
-    
 }
