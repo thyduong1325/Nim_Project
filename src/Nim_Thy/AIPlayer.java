@@ -19,6 +19,7 @@ public class AIPlayer extends Player{
 	// Constructor
 	public AIPlayer() {
 		super("AI Player");
+		super.setPlayerId(0);
 	}
 	
 	
@@ -70,6 +71,11 @@ public class AIPlayer extends Player{
 	// Method to make a move
 	@Override
     public Move makeMove(Board board) {
+		// Display the prompt and board
+        System.out.println("A.I. turn:");
+        
+        board.display();
+        
         int nimSum = calculateNimSum(board.getHeaps());
 
         // If the current xorSum is zero, the AI will make a random move
