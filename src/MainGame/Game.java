@@ -3,7 +3,6 @@ package MainGame;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
-import MainGame.*;
 import Nim_Anh.*;
 import Nim_Emely.*;
 import Nim_Thy.*;
@@ -132,7 +131,7 @@ public class Game{
             }
             players[0] = new HumanPlayer(name2);
         }
-        
+
         while (player2.equals("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();

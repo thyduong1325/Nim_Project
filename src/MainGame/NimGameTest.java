@@ -15,7 +15,7 @@ public class NimGameTest {
         // Create the scanner
         Scanner scan = new Scanner(System.in);
 
-        // Create 
+        // Create a sentinel
         boolean continuePlaying = true;
 
         // Display the welcome prompt
@@ -40,7 +40,22 @@ public class NimGameTest {
             option = scan.next();
         }
 
-        // Option 1 : New Game
+        // Option 1: New Game
+        if (option.equals("N")){
+
+        }
+
+        // Option 2: Resume Game
+        else if (option.equals("R")){
+
+        }
+
+        // Option 3: Quit
+        else if (option.equals("Q")){
+            System.out.println("Thank you for playing!");
+            System.out.println("CISC 230 project 1.");
+            System.out.println("Created by Anh, Emely, Thy!");
+        }
 
 
 
