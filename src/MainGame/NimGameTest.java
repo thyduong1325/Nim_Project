@@ -46,13 +46,13 @@ public class NimGameTest {
             // Create players
             mainGame.createNewPlayers(leaderboard);
 
-            /*
-                This loop is the game
-                if continue playing is true the game will repeat using same players
-                At the begining of each game you can select who first player is.
-            */
-            while(continuePlaying){
-                //Selecting first Player
+        /*
+            This loop is the game
+            if continue playing is true the game will repeat using same players
+            At the begining of each game you can select who first player is.
+        */
+        while(continuePlaying){
+            //Selecting first Player
                 System.out.print("Choose the player for the first turn (1 or 2): ");
                 int firstTurn = scan.nextInt();
 
@@ -62,7 +62,7 @@ public class NimGameTest {
                     System.out.println();
                     System.out.print("Choose the player for the first turn (1 or 2): ");
                     firstTurn = scan.nextInt();
-                }
+            }
 
                 // Start the game
                 if (firstTurn == 1)
@@ -73,17 +73,17 @@ public class NimGameTest {
                 // Winner is returned as a String
                 String winner = mainGame.play();
                 
-                //Handeling a cancel
-                if(winner == null){
-                    break;
-                }
-                System.out.println("\n\nWinner is: " + winner );
-                
-                // Asking to play again
-                continuePlaying = mainGame.playAgain(scan);
+            //Handeling a cancel
+            if(winner == null){
+                break;
             }
+            System.out.println("\n\nWinner is: " + winner );
+                
+            // Asking to play again
+                continuePlaying = mainGame.playAgain(scan);
         }
-
+        }
+    
         // Option 2: Resume Game
         else if (option.equalsIgnoreCase("R")){
 
@@ -97,5 +97,5 @@ public class NimGameTest {
         }
 
     }
-
+    
 }
