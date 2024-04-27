@@ -9,8 +9,8 @@ package Nim_Thy;
 //************************************************************
 
 import java.util.Random;
-import Nim_Anh.Move;
-import Nim_Emely.Board;
+import Nim_Anh.*;
+import Nim_Emely.*;
 
 public abstract class Player {
 	// Create the random
@@ -19,11 +19,9 @@ public abstract class Player {
 	// Instance data
 	private String name;
 	private int playerId;
-	private int score;
+	private Score score;
 
-	
 	// Constructors
-	
 	public Player(String in_name) {
 		// Check the in_name
 		boolean check = false;
@@ -43,7 +41,7 @@ public abstract class Player {
 		// Assign to the name of the player
 		if (check) {
 			this.name = in_name;
-			this.score = 0;
+			this.score = new Score(name, 0);
 			this.playerId = gen.nextInt(100000000) + 1;
 		}
 			
@@ -61,13 +59,13 @@ public abstract class Player {
 		return this.playerId;
 	}
 	
-	public int getScore() {
+	public Score getScoreObject() {
 		return this.score;
 	}
 	
 	
 	// Setter mothod - Fix the name
-	public void setplayerName(String in_name) {
+	public void setPlayerName(String in_name) {
 		// Check the in_name
 		boolean check = false;
 		
@@ -92,10 +90,14 @@ public abstract class Player {
 			System.out.println("Invalid name!");
 	}
 	
+	public void setPlayerId(int id) {
+		this.playerId = id;
+	}
+	
 	
 	// Win method - Update the score
 	public void win() {
-		score++;
+		score.setScore(score.getScore() + 1);
 	}
 
 	// Player make move
