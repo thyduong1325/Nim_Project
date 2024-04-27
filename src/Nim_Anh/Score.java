@@ -1,9 +1,15 @@
 package Nim_Anh;
+
 public class Score {
     private String playerName;
-    private int score;
+    private int score = 0;
     private int gameID;
 
+    public Score(String playerName, int score) {
+        this.playerName = playerName;
+        this.score = score;
+    }
+    
     public Score(String playerName, int score, int gameID) {
         this.playerName = playerName;
         this.score = score;
