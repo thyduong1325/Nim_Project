@@ -12,7 +12,7 @@ public class Game{
     private Player[] players;
     private Board board;
     private String currentTurn;
-    private int gameId;
+    private int gameID;
 
 
     // Constructors
@@ -31,11 +31,13 @@ public class Game{
         heaps.add(7);
         board = new Board(heaps);
 
-
-        gameId = new Random().nextInt(1000000) + 1;
-        while (mainLeaderboard.lookForOldGameId(gameId)){
-            gameId = new Random().nextInt(1000000) + 1;
+        gameID = new Random().nextInt(1000000) + 1;
+        if (mainLeaderboard.getPlayers() != null) {
+        	while (mainLeaderboard.lookForOldGameID(gameID) != -1){
+            gameID = new Random().nextInt(1000000) + 1;
+        	}
         }
+        
     }
 
 
@@ -48,16 +50,13 @@ public class Game{
         return board;
     }
 
-    public int getGameId(){
-        return gameId;
+    public int getGameID(){
+        return gameID;
     }
 
 
     // Method to create 2 players
-    public void createNewPlayers(Leaderboard mainLeaderboard){
-        // Create the scanner
-        Scanner scan = new Scanner(System.in);
-
+    public void createNewPlayers(Leaderboard mainLeaderboard, Scanner scan){
         // Count AI Player
         int ai_count = 0;
 
@@ -79,21 +78,25 @@ public class Game{
 
         // Assign type and name for player 1
         if (player1.equalsIgnoreCase("H")){
-            System.out.print("Name of Player 1: ");
-            String name1 = scan.next();
-            while (name1.length() == 0 || name1.charAt(0) == ' '){
+            System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+            String option = scan.next();
+            
+            // Check user input
+            while (!option.equalsIgnoreCase("S") && !option.equalsIgnoreCase("L")){
                 System.out.println("Invalid input!");
                 System.out.println();
-                System.out.print("Name of Player 1: ");
-                name1 = scan.next();
+                System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+                option = scan.next();
             }
-            while (mainLeaderboard.lookForOldPlayer(name1)){
-                System.out.println("This name is already exist!");
-                System.out.println();
-                System.out.print("Name of Player 1: ");
-                name1 = scan.next();
-            }
-            players[0] = new HumanPlayer(name1);
+            
+            // Sign up option
+            if (option.equalsIgnoreCase("S"))
+            	players[0] = signUp(mainLeaderboard, scan);
+            
+            // Log in option
+            else
+            	players[0] = logIn(mainLeaderboard, scan);
+   
         }
         else if (player1.equalsIgnoreCase("A")){
             players[0] = new AIPlayer();
@@ -114,38 +117,97 @@ public class Game{
             System.out.print("Player 2: ");
             player2 = scan.next();
         }
-
-        // Assign type and name for player 2
-        if (player2.equalsIgnoreCase("H")){
-            System.out.print("Name of Player 2: ");
-            String name2 = scan.next();
-            while (name2.length() == 0 || name2.charAt(0) == ' '){
-                System.out.println("Invalid input!");
-                System.out.println();
-                System.out.print("Name of Player 2: ");
-                name2 = scan.next();
-            }
-            while (mainLeaderboard.lookForOldPlayer(name2)){
-                System.out.println("This name is already exist!");
-                System.out.println();
-                System.out.print("Name of Player 1: ");
-                name2 = scan.next();
-            }
-            players[0] = new HumanPlayer(name2);
-        }
-
+        
         while (player2.equalsIgnoreCase("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();
             System.out.print("Player 2: ");
             player2 = scan.next();
         }
+
+        // Assign type and name for player 2
+        if (player2.equalsIgnoreCase("H")){
+        	System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+            String option = scan.next();
+            
+            // Check user input
+            while (!option.equalsIgnoreCase("S") && !option.equalsIgnoreCase("L")){
+                System.out.println("Invalid input!");
+                System.out.println();
+                System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+                option = scan.next();
+            }
+            
+            // Sign up option
+            if (option.equalsIgnoreCase("S"))
+            	players[1] = signUp(mainLeaderboard, scan);
+            
+            // Log in option
+            else
+            	players[1] = logIn(mainLeaderboard, scan);
+   
+        }
+
         if (player2.equalsIgnoreCase("A")){
             players[1] = new AIPlayer();
         }
 
-        // Close the scanner
-        scan.close();
+    }
+    
+    // signUp method
+    public HumanPlayer signUp(Leaderboard leaderboard, Scanner scan) {
+    	System.out.println("Name of Player: ");
+        String name = scan.nextLine();
+        while (name.length() == 0 || name.charAt(0) == ' '){
+            System.out.println("Invalid input!");
+            System.out.println();
+            System.out.println("Name of Player: ");
+            name = scan.nextLine();
+        }
+        HumanPlayer new_human = new HumanPlayer(name);
+        while (leaderboard.lookForOldPlayer(name, new_human.getPlayerId()) != -1){
+			new_human.setPlayerId(new Random().nextInt(100000000) + 1);
+        }
+        
+        System.out.println();
+        System.out.println("Player's ID: " + new_human.getPlayerId());
+        
+        return new_human;
+    }
+    
+    // logIn method
+    public HumanPlayer logIn(Leaderboard leaderboard, Scanner scan) {
+    	if (leaderboard.getPlayers().size() == 0) {
+    		System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
+    		return null;
+    	}
+    	
+    	System.out.println("Name of Player: ");
+        String name = scan.nextLine();
+        while (name.length() == 0 || name.charAt(0) == ' '){
+            System.out.println("Invalid input!");
+            System.out.println();
+            System.out.println("Name of Player: ");
+            name = scan.nextLine();
+        }
+        
+        System.out.println();
+        
+        System.out.print("Player's ID: ");
+        int id = scan.nextInt();
+        while (id == 0){
+            System.out.println("Invalid input!");
+            System.out.println();
+            System.out.print("Player's ID: ");
+            id = scan.nextInt();
+        }
+        
+        if (leaderboard.lookForOldPlayer(name, id) != -1) {
+        	System.out.println("The Player doesn't exist! Please try again");
+        	return null;
+        }
+        
+        return (HumanPlayer) leaderboard.getPlayers().get(leaderboard.lookForOldPlayer(name, id));
     }
 
     // startGame method
@@ -154,7 +216,7 @@ public class Game{
     }
 
     // play method
-    public String play(){
+    public Player play(){
         // Getting name of first player
         Player playing = lookForPlayer(currentTurn);
 
@@ -190,7 +252,7 @@ public class Game{
         }
         //Since last player Lost, the next turn Player won
         playing = nextTurn();
-        return playing.getPlayerName();
+        return playing;
     }
     
     private Player lookForPlayer(String name){
@@ -248,5 +310,16 @@ public class Game{
             return false;
 
     }
-}
+    
+    // Linear-search function to find the index of an element 
+    public int findIndex(Player player) {
+    	int result = 0;
+    	// Create a for loop throught the players array
+    	for (int i = 0 ; i < players.length ; i++) {
+    		if (players[i] == player) 
+    			result = i;
+    	}
+    	return result;
 
+    } 
+}
