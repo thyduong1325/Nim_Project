@@ -11,26 +11,13 @@ public class Game{
     // Instance data
     private Player[] players;
     private Board board;
-    private Leaderboard leaderboard;
     private String currentTurn;
     private int gameId;
 
+
     // Constructors
     public Game() {
-        // Initialize all the data
-        players = new Player[2];
 
-        ArrayList<Integer> heaps = new ArrayList<>();
-        heaps.add(1);
-        heaps.add(3);
-        heaps.add(5);
-        heaps.add(7);
-        board = new Board(heaps);
-
-        gameId = new Random().nextInt(1000000) + 1;
-        while (leaderboard.lookForOldGameId(gameId)){
-            gameId = new Random().nextInt(1000000) + 1;
-        }
     }
 
     public Game(Leaderboard mainLeaderboard) {
@@ -44,15 +31,30 @@ public class Game{
         heaps.add(7);
         board = new Board(heaps);
 
-        leaderboard = mainLeaderboard;
 
         gameId = new Random().nextInt(1000000) + 1;
-        while (leaderboard.lookForOldGameId(gameId)){
+        while (mainLeaderboard.lookForOldGameId(gameId)){
             gameId = new Random().nextInt(1000000) + 1;
         }
     }
 
-    public void createNewPlayers(){
+
+    // Getter methods
+    public Player[] getPlayers(){
+        return players;
+    }
+
+    public Board geBoard(){
+        return board;
+    }
+
+    public int getGameId(){
+        return gameId;
+    }
+
+
+    // Method to create 2 players
+    public void createNewPlayers(Leaderboard mainLeaderboard){
         // Create the scanner
         Scanner scan = new Scanner(System.in);
 
@@ -85,7 +87,7 @@ public class Game{
                 System.out.print("Name of Player 1: ");
                 name1 = scan.next();
             }
-            while (leaderboard.lookForOldPlayer(name1)){
+            while (mainLeaderboard.lookForOldPlayer(name1)){
                 System.out.println("This name is already exist!");
                 System.out.println();
                 System.out.print("Name of Player 1: ");
@@ -123,7 +125,7 @@ public class Game{
                 System.out.print("Name of Player 2: ");
                 name2 = scan.next();
             }
-            while (leaderboard.lookForOldPlayer(name2)){
+            while (mainLeaderboard.lookForOldPlayer(name2)){
                 System.out.println("This name is already exist!");
                 System.out.println();
                 System.out.print("Name of Player 1: ");
