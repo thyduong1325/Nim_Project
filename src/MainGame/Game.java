@@ -1,5 +1,6 @@
 package MainGame;
 
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
 import MainGame.*;
@@ -12,8 +13,10 @@ public class Game{
     private Player[] players;
     private Board board;
     private Leaderboard leaderboard;
+    private String currentTurn;
+    private int gameId;
 
-    // Constructor
+    // Constructors
     public Game() {
         // Initialize all the data
         players = new Player[2];
@@ -25,7 +28,29 @@ public class Game{
         heaps.add(7);
         board = new Board(heaps);
 
-        leaderboard = new Leaderboard();
+        gameId = new Random().nextInt(1000000) + 1;
+        while (leaderboard.lookForOldGameId(gameId)){
+            gameId = new Random().nextInt(1000000) + 1;
+        }
+    }
+
+    public Game(Leaderboard mainLeaderboard) {
+        // Initialize all the data
+        players = new Player[2];
+
+        ArrayList<Integer> heaps = new ArrayList<>();
+        heaps.add(1);
+        heaps.add(3);
+        heaps.add(5);
+        heaps.add(7);
+        board = new Board(heaps);
+
+        leaderboard = mainLeaderboard;
+
+        gameId = new Random().nextInt(1000000) + 1;
+        while (leaderboard.lookForOldGameId(gameId)){
+            gameId = new Random().nextInt(1000000) + 1;
+        }
     }
 
     public void createNewPlayers(){
@@ -57,6 +82,12 @@ public class Game{
             String name1 = scan.next();
             while (name1.length() == 0 || name1.charAt(0) == ' '){
                 System.out.println("Invalid input!");
+                System.out.println();
+                System.out.print("Name of Player 1: ");
+                name1 = scan.next();
+            }
+            while (leaderboard.lookForOldPlayer(name1)){
+                System.out.println("This name is already exist!");
                 System.out.println();
                 System.out.print("Name of Player 1: ");
                 name1 = scan.next();
@@ -93,8 +124,15 @@ public class Game{
                 System.out.print("Name of Player 2: ");
                 name2 = scan.next();
             }
+            while (leaderboard.lookForOldPlayer(name2)){
+                System.out.println("This name is already exist!");
+                System.out.println();
+                System.out.print("Name of Player 1: ");
+                name2 = scan.next();
+            }
             players[0] = new HumanPlayer(name2);
         }
+        
         while (player2.equals("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();
@@ -108,60 +146,41 @@ public class Game{
         // Close the scanner
         scan.close();
     }
+
     // startGame method
-    public void startGame(){
-        // Create the scanner
-        Scanner scan = new Scanner(System.in);
-
-        // Display the welcome prompt
-        System.out.println("=======================================");
-        System.out.println("        WELCOME TO THE NIM GAME");
-        System.out.println("=======================================");
-        System.out.println();
-        
-        // Display the Main Menu
-        System.out.println("New Game (enter \"N\")");
-        System.out.println("Resume Game (enter \"R\")");
-        System.out.println("Quit (enter \"Q\")");
-        System.out.println("----------------------------");
-        System.out.print("Enter your option: ");
-        String option = scan.next();
-
-        // Check user input
-        while (!option.equals("N") && !option.equals("R") && !option.equals("Q")){
-            System.out.println("Invalid input!");
-            System.out.println();
-            System.out.print("Enter your option: ");
-            option = scan.next();
-        }
-
-        // Option 1 : New Game
-        
-
+    public void startGame(String firstPlayer){
+        this.currentTurn = firstPlayer;
     }
 
+    // play method
     public String play(){
-        
-        
-        Player playing = lookForPlayer(currentTurn); //getting name of first player
-        Pile newPile = new Pile(); //create new pile
+        // Getting name of first player
+        Player playing = lookForPlayer(currentTurn);
+
         //Method to display a header with information about the game 
-        displayGameInfo(playing, newPile.getAmount());
+        displayGameInfo(playing, board.getHeaps().size());
+
+
         boolean cancelGame = false; // to cancel game if true
-        //Loop will stop if Pile gets to 1.
+
+        //Loop will stop if Heap gets to 1.
         //Meaning that player that goes next will loose
-        while(newPile.getAmount()>1){
-            //Polymorphically getting the amount been removed by the Players
-            int amountTakenByPlayer = playing.move(newPile.getAmount());
+        while(board.getHeaps().size() > 1){
+            // Players take turn making the move
+            Move currentMove = playing.makeMove(board);
+
             //Handeling a cancel this will exit the game
-            if(amountTakenByPlayer == -1){
+            if(currentMove == null){
                 cancelGame = true;
                 break;
             }
-            //Taking the amount from Pile
-            newPile.take(amountTakenByPlayer);
+
+            //Taking the amount from Heap of the board
+            board.removeObjects(currentMove.getHeapIndex(), currentMove.getNumObjectsRemoved());
+
             //Logging the turn, amount removed, and remainder.
-            System.out.println("Turn: \t" + playing.getName() + "\tRemoved: \t"+ amountTakenByPlayer+ "\tPile: \t" + newPile.getAmount());
+            System.out.println("Turn: \t" + playing.getPlayerName() + "\tRemoved: \t"+ currentMove.getNumObjectsRemoved() + "\tHeap: \t" + (currentMove.getHeapIndex() + 1));
+            
             //Looping the players turns
             playing = nextTurn();
         }
@@ -170,19 +189,14 @@ public class Game{
         }
         //Since last player Lost, the next turn Player won
         playing = nextTurn();
-        return playing.getName();
+        return playing.getPlayerName();
     }
     
-    /**
-     * Given a String Name it will return the Player. 
-     * @param name Name of Player
-     * @return Player with given Name
-     */
     private Player lookForPlayer(String name){
         //Loop thorugh Players
-        for(int index =0; index < players.length; index++){
+        for(int index = 0; index < players.length; index++){
             //Getting name and comparing it to Name been looked for
-            if(players[index].getName().equals(name)){
+            if(players[index].getPlayerName().equals(name)){
                 return players[index];
             }
             
@@ -190,36 +204,26 @@ public class Game{
         return null;
     }
     
-    /**
-     * Returns the next player 
-     * @return Next Player
-     */
     
-      private Player nextTurn(){
+    private Player nextTurn(){
           // simple conditional to change the turn  between both players
-        if(players[0].getName() == currentTurn){
-            currentTurn = players[1].getName();
+        if(players[0].getPlayerName() == currentTurn){
+            currentTurn = players[1].getPlayerName();
             return players[1];
         }else{
-            currentTurn = players[0].getName();
+            currentTurn = players[0].getPlayerName();
             return players[0]; 
         }
     }
       
-      /**
-       * Logs a header for the game with the information of the Player, pile size
-       * and who goes first.
-       * @param first Player that goes first
-       * @param pileSize Size of pile when created
-       */
-      private void displayGameInfo(Player first, int pileSize){
+      private void displayGameInfo(Player first, int HeapSize){
           System.out.println("*****************************************");
           System.out.println("\t\tNim Game\n");
           for(int index = 0; index < players.length; index++){
-              System.out.println("Players Name: \t" +players[index].getName());
+              System.out.println("Players Name: \t" +players[index].getPlayerName());
           }
-          System.out.println("First Turn: "+ first.getName());
-          System.out.println("Pile Size: "+ pileSize);
+          System.out.println("First Turn: "+ first.getPlayerName());
+          System.out.println("Heap Size: "+ HeapSize);
           System.out.println("*****************************************");   
       }  
 }

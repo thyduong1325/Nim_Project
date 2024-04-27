@@ -18,19 +18,17 @@ public class Board {
     }
 
     // Method to make a move: remove a number of objects from a specified heap
-    public boolean removeObjects(int heapIndex, int numberOfObjects) {
+    public void removeObjects(int heapIndex, int numberOfObjects) {
         // Check if the move is valid
         if (heapIndex < 0 || heapIndex >= heaps.size() || heaps.get(heapIndex) < numberOfObjects || numberOfObjects < 1) {
         	// Check if the specified heap index is valid, if there are enough objects to remove, and if at least one object is being removed
 
             System.out.println("Invalid move. Please try again.");  // Print error message if the move is invalid.
-            return false;  // Return false indicating the move was not successful.
         }
 
         // Update the heap after a valid move
         heaps.set(heapIndex, heaps.get(heapIndex) - numberOfObjects);  // Subtract the number of objects removed from the specified heap.
         System.out.println("Removed " + numberOfObjects + " objects from Heap " + (heapIndex + 1));  // Print confirmation of objects removed using string concatenation.
-        return true;  // Return true indicating the move was successful.
     }
 
     // Check if the game is over (i.e., all heaps are empty)

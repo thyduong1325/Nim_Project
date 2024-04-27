@@ -9,11 +9,12 @@ package Nim_Thy;
 //************************************************************
 
 import java.util.Random;
+import Nim_Anh.Move;
+import Nim_Emely.Board;
 
-public class Player {
+public abstract class Player {
 	// Create the random
 	Random gen = new Random();
-	
 	
 	// Instance data
 	private String name;
@@ -96,4 +97,7 @@ public class Player {
 	public void win() {
 		score++;
 	}
+
+	// Player make move
+	public abstract Move makeMove(Board board);
 }

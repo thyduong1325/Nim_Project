@@ -50,9 +50,18 @@ public class Leaderboard{
             System.out.println(score);
     }
 
-    public boolean lookForPlayer(String name){
+    public boolean lookForOldPlayer(String name){
         for (Score score : scores){
             if(score.getPlayerName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean lookForOldGameId(int id){
+        for (Score score : scores){
+            if(score.getGameID() == id){
                 return true;
             }
         }

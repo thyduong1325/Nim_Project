@@ -68,6 +68,7 @@ public class AIPlayer extends Player{
 	 */
 	
 	// Method to make a move
+	@Override
     public Move makeMove(Board board) {
         int nimSum = calculateNimSum(board.getHeaps());
 
