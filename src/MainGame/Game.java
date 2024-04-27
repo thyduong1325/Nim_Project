@@ -68,7 +68,7 @@ public class Game{
         String player1 = scan.next();
 
         // Check user input
-        while (!player1.equals("H") && !player1.equals("A")){
+        while (!player1.equalsIgnoreCase("H") && !player1.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 1: ");
@@ -76,7 +76,7 @@ public class Game{
         }
 
         // Assign type and name for player 1
-        if (player1.equals("H")){
+        if (player1.equalsIgnoreCase("H")){
             System.out.print("Name of Player 1: ");
             String name1 = scan.next();
             while (name1.length() == 0 || name1.charAt(0) == ' '){
@@ -93,7 +93,7 @@ public class Game{
             }
             players[0] = new HumanPlayer(name1);
         }
-        else if (player1.equals("A")){
+        else if (player1.equalsIgnoreCase("A")){
             players[0] = new AIPlayer();
             ai_count++;
         }
@@ -106,7 +106,7 @@ public class Game{
         String player2 = scan.next();
 
         // Check user input
-        while (!player2.equals("H") && !player2.equals("A")){
+        while (!player2.equalsIgnoreCase("H") && !player2.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 2: ");
@@ -114,7 +114,7 @@ public class Game{
         }
 
         // Assign type and name for player 2
-        if (player2.equals("H")){
+        if (player2.equalsIgnoreCase("H")){
             System.out.print("Name of Player 2: ");
             String name2 = scan.next();
             while (name2.length() == 0 || name2.charAt(0) == ' '){
@@ -132,13 +132,13 @@ public class Game{
             players[0] = new HumanPlayer(name2);
         }
 
-        while (player2.equals("A") && ai_count > 0){
+        while (player2.equalsIgnoreCase("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();
             System.out.print("Player 2: ");
             player2 = scan.next();
         }
-        if (player2.equals("A")){
+        if (player2.equalsIgnoreCase("A")){
             players[1] = new AIPlayer();
         }
 
@@ -195,7 +195,7 @@ public class Game{
         //Loop thorugh Players
         for(int index = 0; index < players.length; index++){
             //Getting name and comparing it to Name been looked for
-            if(players[index].getPlayerName().equals(name)){
+            if(players[index].getPlayerName().equalsIgnoreCase(name)){
                 return players[index];
             }
             
