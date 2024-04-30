@@ -29,7 +29,6 @@ public class Board {
 
         // Update the heap after a valid move
         heaps.set(heapIndex, heaps.get(heapIndex) - numberOfObjects);  // Subtract the number of objects removed from the specified heap.
-        System.out.println("Removed " + numberOfObjects + " objects from Heap " + (heapIndex + 1));  // Print confirmation of objects removed using string concatenation.
     }
 
     // Check if the game is over (i.e., all heaps are empty)

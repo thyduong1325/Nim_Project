@@ -59,9 +59,6 @@ public class HumanPlayer extends Player{
             scanner.close();
             return null;
         }
-        
-        // Close the scanner
-        scanner.close();
         return new Move(heapIndex, objectsToRemove);
     }
 
