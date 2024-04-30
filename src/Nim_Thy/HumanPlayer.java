@@ -34,7 +34,7 @@ public class HumanPlayer extends Player{
         int heapIndex = scanner.nextInt() - 1;
 
         // Check user input
-        while (heapIndex < 0 || heapIndex >= board.getHeaps().size()){
+        while (heapIndex < 0 || heapIndex >= board.getHeaps().size() || board.getHeaps().get(heapIndex - 1) == 0){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Enter heap index: ");
@@ -50,6 +50,13 @@ public class HumanPlayer extends Player{
         // Check user input
         while (objectsToRemove < -1 || objectsToRemove > board.getHeaps().get(heapIndex)){
             System.out.println("Invalid input!");
+            System.out.println();
+            System.out.print("Enter number of objects to remove: ");
+            objectsToRemove = scanner.nextInt();
+        }
+
+        while (objectsToRemove == 0){
+            System.out.println("You have to remove 1 or more objects from the heap.");
             System.out.println();
             System.out.print("Enter number of objects to remove: ");
             objectsToRemove = scanner.nextInt();
