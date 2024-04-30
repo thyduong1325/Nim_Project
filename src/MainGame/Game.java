@@ -156,7 +156,7 @@ public class Game{
     
     // signUp method
     public HumanPlayer signUp(Leaderboard leaderboard, Scanner scan) {
-    	System.out.println("Name of Player: ");
+    	System.out.print("Name of Player: ");
         String name = scan.nextLine();
         while (name.length() == 0 || name.charAt(0) == ' '){
             System.out.println("Invalid input!");
@@ -182,7 +182,7 @@ public class Game{
     		return null;
     	}
     	
-    	System.out.println("Name of Player: ");
+    	System.out.print("Name of Player: ");
         String name = scan.nextLine();
         while (name.length() == 0 || name.charAt(0) == ' '){
             System.out.println("Invalid input!");

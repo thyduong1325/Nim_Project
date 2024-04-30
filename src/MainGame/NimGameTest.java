@@ -117,8 +117,6 @@ public class NimGameTest {
             }
 
         }
-        // Close the scan
-        scan.close();
         
         // Display the end prompt
         System.out.println("=======================================");
