@@ -26,15 +26,15 @@ public class HumanPlayer extends Player{
 
         // Display the prompt and board
         System.out.println("Your turn, " + super.getPlayerName() + ":");
-        
+        System.out.println();
         board.display();
-        
+        System.out.println();
         // Take user input for Heap index
         System.out.print("Enter heap index: ");
         int heapIndex = scanner.nextInt() - 1;
 
         // Check user input
-        while (heapIndex < 0 || heapIndex >= board.getHeaps().size() || board.getHeaps().get(heapIndex - 1) == 0){
+        while (heapIndex < 0 || heapIndex >= board.getHeaps().size() || board.getHeaps().get(heapIndex) == 0){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Enter heap index: ");

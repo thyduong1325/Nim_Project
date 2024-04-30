@@ -80,7 +80,6 @@ public class Game{
         if (player1.equalsIgnoreCase("H")){
             System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
             String option = scan.next();
-            scan.nextLine();
             System.out.println();
 
             // Check user input
@@ -89,7 +88,11 @@ public class Game{
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
                 option = scan.next();
-                scan.nextLine();
+                System.out.println();
+            }
+            while (logIn(mainLeaderboard, scan) == null){
+                System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+                option = scan.next();
                 System.out.println();
             }
             
@@ -99,7 +102,7 @@ public class Game{
             
             // Log in option
             else
-            	players[0] = logIn(mainLeaderboard, scan);
+                players[0] = logIn(mainLeaderboard, scan);
    
         }
         else if (player1.equalsIgnoreCase("A")){
