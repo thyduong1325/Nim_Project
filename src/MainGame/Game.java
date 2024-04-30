@@ -80,13 +80,17 @@ public class Game{
         if (player1.equalsIgnoreCase("H")){
             System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
             String option = scan.next();
-            
+            scan.nextLine();
+            System.out.println();
+
             // Check user input
             while (!option.equalsIgnoreCase("S") && !option.equalsIgnoreCase("L")){
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
                 option = scan.next();
+                scan.nextLine();
+                System.out.println();
             }
             
             // Sign up option
@@ -129,6 +133,7 @@ public class Game{
         if (player2.equalsIgnoreCase("H")){
         	System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
             String option = scan.next();
+            System.out.println();
             
             // Check user input
             while (!option.equalsIgnoreCase("S") && !option.equalsIgnoreCase("L")){
@@ -136,6 +141,7 @@ public class Game{
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
                 option = scan.next();
+                System.out.println();
             }
             
             // Sign up option
@@ -158,10 +164,10 @@ public class Game{
     public HumanPlayer signUp(Leaderboard leaderboard, Scanner scan) {
     	System.out.print("Name of Player: ");
         String name = scan.nextLine();
-        while (name.length() == 0 || name.charAt(0) == ' '){
+        while (name == null){
             System.out.println("Invalid input!");
             System.out.println();
-            System.out.println("Name of Player: ");
+            System.out.print("Name of Player: ");
             name = scan.nextLine();
         }
         HumanPlayer new_human = new HumanPlayer(name);
@@ -184,7 +190,7 @@ public class Game{
     	
     	System.out.print("Name of Player: ");
         String name = scan.nextLine();
-        while (name.length() == 0 || name.charAt(0) == ' '){
+        while (name == null){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.println("Name of Player: ");

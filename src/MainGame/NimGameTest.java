@@ -54,13 +54,14 @@ public class NimGameTest {
 
                 // Create players
                 mainGame.createNewPlayers(leaderboard, scan);
+                System.out.println();
 
                 //Selecting first Player
                 System.out.print("Choose the player for the first turn (1 or 2): ");
                 int firstTurn = scan.nextInt();
 
                 // Check user input
-                while (firstTurn != 1 || firstTurn != 2){
+                while (firstTurn != 1 && firstTurn != 2){
                     System.out.println("Invalid input!");
                     System.out.println();
                     System.out.print("Choose the player for the first turn (1 or 2): ");
