@@ -17,9 +17,9 @@ public abstract class Player {
 	Random gen = new Random();
 	
 	// Instance data
-	private String name;
-	private int playerId;
-	private Score score;
+	protected String name;
+	protected int playerId;
+	protected Score score;
 
 	// Constructors
 	public Player(String in_name) {
