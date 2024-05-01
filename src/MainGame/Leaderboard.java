@@ -90,15 +90,15 @@ public class Leaderboard{
      * Displays the leaderboard with the top players and their ranks.
      * @param numHumanPlayers The number of top players to display.
      */
-    public void display(int numHumanPlayers, Scanner scan) {
-    	System.out.println("---------------------------------------");
-        System.out.println("              LEADERBOARD");
-        System.out.println("---------------------------------------");
+    public void display(int numHumanPlayers) {
+    	System.out.println("-----------------------------------------------------------");
+        System.out.println("                        LEADERBOARD");
+        System.out.println("-----------------------------------------------------------");
         System.out.println();
         ArrayList<Player> top_n = getTopPlayer(numHumanPlayers);
         for (int rank = 1 ; rank <= top_n.size() ; rank++) {
         	System.out.println("Rank " + rank + ": " + top_n.get(rank - 1).getScoreObject());
-            scan.nextLine();scan.nextLine();scan.nextLine(); // Consume "\n" in Score toString()
+            System.out.println();
         }
     }
 

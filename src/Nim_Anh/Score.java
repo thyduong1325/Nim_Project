@@ -65,6 +65,6 @@ public class Score {
 
     // Override toString() method to return a formatted string representation of the Score object
     public String toString(){
-        return "Player Name: " + playerName + "\nScore: " + score + "\nGameID: " + gameID + "\n";
+        return "Player Name: " + playerName + "\nScore: " + score + "\nGameID: " + gameID ;
     }
 }

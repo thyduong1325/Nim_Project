@@ -117,7 +117,7 @@ public class NimGameTest {
                 	leaderboard.addHumanPlayer(mainGame.getPlayers()[l_index]);
                 
                 // Display the leaderboard
-                leaderboard.display(leaderboard.getPlayers().size(), scan);
+                leaderboard.display(leaderboard.getPlayers().size());
                 
                 System.out.println();
                 System.out.println();
