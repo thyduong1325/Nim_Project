@@ -93,7 +93,7 @@ public class Game {
         int ai_count = 0; // Counter for AI players
 
         // Selecting player 1
-        System.out.println("Select Human Player (enter \"H\") or AI Player (enter \"A\"): ");
+        System.out.println("\nSelect Human Player (enter \"H\") or AI Player (enter \"A\"): ");
         System.out.print("Player 1: ");
         String player1 = scan.next();
 
@@ -114,7 +114,7 @@ public class Game {
         }
 
         // Selecting player 2
-        System.out.println("Select Human Player (enter \"H\") or AI Player (enter \"A\"): ");
+        System.out.println("\nSelect Human Player (enter \"H\") or AI Player (enter \"A\"): ");
         System.out.print("Player 2: ");
         String player2 = scan.next();
 

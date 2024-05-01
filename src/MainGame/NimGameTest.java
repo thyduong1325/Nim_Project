@@ -102,6 +102,7 @@ public class NimGameTest {
                     break;
                 }
                 System.out.println("\n\nWinner is: " + winner.getPlayerName());
+                System.out.println();
                 
                 // Update player's score
                 winner.win(mainGame.getGameID());
@@ -131,10 +132,10 @@ public class NimGameTest {
         
         // Display the end prompt
         System.out.println("===========================================================");
-        System.out.println("                  THANK YOU FOR PLAYING");
+        System.out.println("                   THANK YOU FOR PLAYING");
         System.out.println("===========================================================");
-        System.out.println("                   CISC 230 project 1");
-        System.out.println("               Created by Anh, Emely, Thy");
+        System.out.println("                    CISC 230 project 1");
+        System.out.println("                Created by Anh, Emely, Thy");
         
     }
 
