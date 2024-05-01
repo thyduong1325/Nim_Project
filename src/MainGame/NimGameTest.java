@@ -95,7 +95,8 @@ public class NimGameTest {
                 System.out.println("\n\nWinner is: " + winner.getPlayerName());
                 
                 // Update player's score
-                winner.win();
+                winner.win(mainGame.getGameID());
+                mainGame.getPlayers()[l_index].loose(mainGame.getGameID());
                 
                 // Update the leaderboard
                 if (!mainGame.getPlayers()[w_index].getPlayerName().equals("AI Player"))

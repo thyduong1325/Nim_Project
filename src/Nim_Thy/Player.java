@@ -96,8 +96,13 @@ public abstract class Player {
 	
 	
 	// Win method - Update the score
-	public void win() {
+	public void win(int game_id) {
 		score.setScore(score.getScore() + 1);
+		score.setGameID(game_id);
+	}
+
+	public void loose(int game_id){
+		score.setGameID(game_id);
 	}
 
 	// Player make move

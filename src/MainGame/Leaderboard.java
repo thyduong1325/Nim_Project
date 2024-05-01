@@ -55,7 +55,7 @@ public class Leaderboard{
         System.out.println();
         ArrayList<Player> top_n = getTopPlayer(numHumanPlayers);
         for (int rank = 1 ; rank <= top_n.size() ; rank++) 
-        	System.out.println("Rank " + rank + top_n.get(rank - 1).getScoreObject());
+        	System.out.println("Rank " + rank + ": " + top_n.get(rank - 1).getScoreObject());
     }
 
     public boolean lookForOldPlayer(String name){
