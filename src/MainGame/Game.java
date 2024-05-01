@@ -113,7 +113,8 @@ public class Game{
         }
 
         System.out.println();
-
+        System.out.println("Select Human Player (enter \"H\") or AI Player (enter \"A\"): ");
+        
         //------------------------------------------------------------------------------------
         // Selection for player 2
         System.out.print("Player 2: ");
@@ -174,9 +175,10 @@ public class Game{
     
     // signUp method
     public HumanPlayer signUp(Leaderboard leaderboard, Scanner scan) {
+        scan.nextLine();
     	System.out.print("Name of Player: ");
         String name = scan.nextLine();
-        while (name == null){
+        while (name.isEmpty()){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Name of Player: ");
@@ -199,14 +201,14 @@ public class Game{
     		System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
     		return null;
     	}
-    	
+    	scan.nextLine();
     	System.out.print("Name of Player: ");
-        String name = scan.nextLine();
-        while (name == null){
+        String name = scan.nextLine().trim();
+        while (name.isEmpty()){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.println("Name of Player: ");
-            name = scan.nextLine();
+            name = scan.nextLine().trim();
         }
         
         System.out.println();
@@ -246,7 +248,7 @@ public class Game{
 
         //Loop will stop if Heap gets to 1.
         //Meaning that player that goes next will loose
-        while(board.getHeaps().size() > 1){
+        while(!board.isGameOver()){
             // Players take turn making the move
             Move currentMove = playing.makeMove(board);
 
@@ -260,7 +262,7 @@ public class Game{
             board.removeObjects(currentMove.getHeapIndex(), currentMove.getNumObjectsRemoved());
 
             //Logging the turn, amount removed, and remainder.
-            System.out.println("Turn: \t" + playing.getPlayerName() + "\tRemoved: \t"+ currentMove.getNumObjectsRemoved() + "\tHeap: \t" + (currentMove.getHeapIndex() + 1));
+            System.out.println("\nTurn: " + playing.getPlayerName() + "\t\tRemoved: "+ currentMove.getNumObjectsRemoved() + "\tHeap: " + (currentMove.getHeapIndex() + 1));
             
             //Looping the players turns
             playing = nextTurn();
@@ -298,7 +300,7 @@ public class Game{
     }
       
     private void displayGameInfo(Player first, int HeapSize){
-          System.out.println("*****************************************");
+          System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n*****************************************");
           System.out.println("\t\tNim Game\n");
           for(int index = 0; index < players.length; index++){
               System.out.println("Players Name: \t" +players[index].getPlayerName());
