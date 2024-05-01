@@ -90,7 +90,9 @@ public class Game{
                 option = scan.next();
                 System.out.println();
             }
-            while (logIn(mainLeaderboard, scan) == null && option.equalsIgnoreCase("L")){
+            while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
+                System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
+                System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
                 option = scan.next();
                 System.out.println();
@@ -101,7 +103,7 @@ public class Game{
             	players[0] = signUp(mainLeaderboard, scan);
             
             // Log in option
-            else
+            else if (option.equalsIgnoreCase("L"))
                 players[0] = logIn(mainLeaderboard, scan);
    
         }
@@ -146,14 +148,21 @@ public class Game{
                 option = scan.next();
                 System.out.println();
             }
+            while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
+                System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
+                System.out.println();
+                System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
+                option = scan.next();
+                System.out.println();
+            }
             
             // Sign up option
             if (option.equalsIgnoreCase("S"))
             	players[1] = signUp(mainLeaderboard, scan);
             
             // Log in option
-            else
-            	players[1] = logIn(mainLeaderboard, scan);
+            else if (option.equalsIgnoreCase("L"))
+                players[1] = logIn(mainLeaderboard, scan);
    
         }
 
@@ -279,7 +288,7 @@ public class Game{
     
     private Player nextTurn(){
           // simple conditional to change the turn  between both players
-        if(players[0].getPlayerName() == currentTurn){
+        if(players[0].getPlayerName().equals(currentTurn)){
             currentTurn = players[1].getPlayerName();
             return players[1];
         }else{
@@ -305,7 +314,7 @@ public class Game{
         String option = scan.next();
 
         // Check the input
-        while (!option.equalsIgnoreCase("Y") || !option.equalsIgnoreCase("N")){
+        while (!option.equalsIgnoreCase("Y") && !option.equalsIgnoreCase("N")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Play again? (Y or N): ");
