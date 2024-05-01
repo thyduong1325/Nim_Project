@@ -1,5 +1,13 @@
 package MainGame;
 
+//************************************************************
+// File Name: Leaderboard.java
+//
+// Purpose: Manages the leaderboard, which stores information 
+// about players' scores and rankings. It includes methods for 
+// adding scores, retrieving high scores, and updating rankings.
+//************************************************************
+
 import java.util.ArrayList;
 import Nim_Thy.Player;
 

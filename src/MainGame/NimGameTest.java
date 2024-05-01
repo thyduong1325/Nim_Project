@@ -1,5 +1,12 @@
 package MainGame;
 
+//************************************************************
+// File Name: NimGameTest.java            Author: Uyen Thy Duong
+//
+// Purpose: This class represents the main entry point for the Nim game.
+// It handles user interaction, game setup, and gameplay flow.
+//************************************************************
+
 import java.util.Scanner;
 import Nim_Thy.*;
 

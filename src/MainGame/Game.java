@@ -1,5 +1,13 @@
 package MainGame;
 
+//************************************************************
+// File Name: Game.java
+//
+// Purpose: This class manages the overall game flow and 
+// interactions between players. It includes methods for starting 
+// a new game, taking turns, and determining the winner.
+//************************************************************
+
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
