@@ -43,14 +43,14 @@ public class NimGameTest {
             System.out.println("                      Quit (enter \"Q\")");
             System.out.println("-----------------------------------------------------------");
             System.out.print("                    Enter your option: ");
-            String option = scan.next();
+            String option = scan.nextLine();
 
             // Check user input
             while (!option.equalsIgnoreCase("N") && !option.equalsIgnoreCase("Q")){
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Enter your option: ");
-                option = scan.next();
+                option = scan.nextLine();
             }
             
             System.out.println();
@@ -103,7 +103,7 @@ public class NimGameTest {
                 }
                 System.out.println("\n\nWinner is: " + winner.getPlayerName());
                 System.out.println();
-                
+
                 // Update player's score
                 winner.win(mainGame.getGameID());
                 mainGame.getPlayers()[l_index].loose(mainGame.getGameID());

@@ -81,20 +81,20 @@ public class Game{
         //------------------------------------------------------------------------------------
         // Selection for player 1
         System.out.print("Player 1: ");
-        String player1 = scan.next();
+        String player1 = scan.nextLine();
 
         // Check user input
         while (!player1.equalsIgnoreCase("H") && !player1.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 1: ");
-            player1 = scan.next();
+            player1 = scan.nextLine();
         }
 
         // Assign type and name for player 1
         if (player1.equalsIgnoreCase("H")){
             System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-            String option = scan.next();
+            String option = scan.nextLine();
             System.out.println();
 
             // Check user input
@@ -102,14 +102,14 @@ public class Game{
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
                 System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             
@@ -133,27 +133,27 @@ public class Game{
         //------------------------------------------------------------------------------------
         // Selection for player 2
         System.out.print("Player 2: ");
-        String player2 = scan.next();
+        String player2 = scan.nextLine();
 
         // Check user input
         while (!player2.equalsIgnoreCase("H") && !player2.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 2: ");
-            player2 = scan.next();
+            player2 = scan.nextLine();
         }
         
         while (player2.equalsIgnoreCase("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();
             System.out.print("Player 2: ");
-            player2 = scan.next();
+            player2 = scan.nextLine();
         }
 
         // Assign type and name for player 2
         if (player2.equalsIgnoreCase("H")){
         	System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-            String option = scan.next();
+            String option = scan.nextLine();
             System.out.println();
             
             // Check user input
@@ -161,14 +161,14 @@ public class Game{
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
                 System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             
@@ -328,14 +328,14 @@ public class Game{
     public boolean playAgain(Scanner scan){
         // Ask the user
         System.out.print("Play again? (Y or N): ");
-        String option = scan.next();
+        String option = scan.nextLine();
 
         // Check the input
         while (!option.equalsIgnoreCase("Y") && !option.equalsIgnoreCase("N")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Play again? (Y or N): ");
-            option = scan.next();
+            option = scan.nextLine();
         }
 
         // Condition to return
