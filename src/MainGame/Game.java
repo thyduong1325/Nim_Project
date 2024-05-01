@@ -90,7 +90,7 @@ public class Game{
                 option = scan.next();
                 System.out.println();
             }
-            while (logIn(mainLeaderboard, scan) == null){
+            while (logIn(mainLeaderboard, scan) == null && option.equalsIgnoreCase("L")){
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
                 option = scan.next();
                 System.out.println();
