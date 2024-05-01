@@ -81,20 +81,20 @@ public class Game{
         //------------------------------------------------------------------------------------
         // Selection for player 1
         System.out.print("Player 1: ");
-        String player1 = scan.next();
+        String player1 = scan.nextLine();
 
         // Check user input
         while (!player1.equalsIgnoreCase("H") && !player1.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 1: ");
-            player1 = scan.next();
+            player1 = scan.nextLine();
         }
 
         // Assign type and name for player 1
         if (player1.equalsIgnoreCase("H")){
             System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-            String option = scan.next();
+            String option = scan.nextLine();
             System.out.println();
 
             // Check user input
@@ -102,14 +102,14 @@ public class Game{
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
                 System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             
@@ -133,27 +133,27 @@ public class Game{
         //------------------------------------------------------------------------------------
         // Selection for player 2
         System.out.print("Player 2: ");
-        String player2 = scan.next();
+        String player2 = scan.nextLine();
 
         // Check user input
         while (!player2.equalsIgnoreCase("H") && !player2.equalsIgnoreCase("A")){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player 2: ");
-            player2 = scan.next();
+            player2 = scan.nextLine();
         }
         
         while (player2.equalsIgnoreCase("A") && ai_count > 0){
             System.out.println("You cannot create 2 AI players!");
             System.out.println();
             System.out.print("Player 2: ");
-            player2 = scan.next();
+            player2 = scan.nextLine();
         }
 
         // Assign type and name for player 2
         if (player2.equalsIgnoreCase("H")){
         	System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-            String option = scan.next();
+            String option = scan.nextLine();
             System.out.println();
             
             // Check user input
@@ -161,14 +161,14 @@ public class Game{
                 System.out.println("Invalid input!");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             while (mainLeaderboard.getPlayers().size() == 0 && option.equalsIgnoreCase("L")){
                 System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
                 System.out.println();
                 System.out.print("Sign Up or Log In (\"S\" or \"L\"): ");
-                option = scan.next();
+                option = scan.nextLine();
                 System.out.println();
             }
             
@@ -190,7 +190,6 @@ public class Game{
     
     // signUp method
     public HumanPlayer signUp(Leaderboard leaderboard, Scanner scan) {
-        scan.nextLine();
     	System.out.print("Name of Player: ");
         String name = scan.nextLine();
         while (name.isEmpty()){
@@ -216,7 +215,6 @@ public class Game{
     		System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
     		return null;
     	}
-    	scan.nextLine();
     	System.out.print("Name of Player: ");
         String name = scan.nextLine().trim();
         while (name.isEmpty()){
@@ -277,7 +275,8 @@ public class Game{
             board.removeObjects(currentMove.getHeapIndex(), currentMove.getNumObjectsRemoved());
 
             //Logging the turn, amount removed, and remainder.
-            System.out.println("\nTurn: " + playing.getPlayerName() + "\t\tRemoved: "+ currentMove.getNumObjectsRemoved() + "\tHeap: " + (currentMove.getHeapIndex() + 1));
+            System.out.println();
+            System.out.println("Turn: " + playing.getPlayerName() + "\t\tRemoved: "+ currentMove.getNumObjectsRemoved() + "\tHeap: " + (currentMove.getHeapIndex() + 1));
             
             //Looping the players turns
             playing = nextTurn();
@@ -315,35 +314,18 @@ public class Game{
     }
       
     private void displayGameInfo(Player first, int HeapSize){
-          System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n*****************************************");
-          System.out.println("\t\tNim Game\n");
-          for(int index = 0; index < players.length; index++){
-              System.out.println("Players Name: \t" +players[index].getPlayerName());
-          }
-          System.out.println("First Turn: "+ first.getPlayerName());
-          System.out.println("Heap Size: "+ HeapSize);
-          System.out.println("*****************************************");   
-    } 
-
-    public boolean playAgain(Scanner scan){
-        // Ask the user
-        System.out.print("Play again? (Y or N): ");
-        String option = scan.next();
-
-        // Check the input
-        while (!option.equalsIgnoreCase("Y") && !option.equalsIgnoreCase("N")){
-            System.out.println("Invalid input!");
-            System.out.println();
-            System.out.print("Play again? (Y or N): ");
-            option = scan.next();
+        System.out.println();System.out.println();System.out.println();System.out.println();System.out.println();
+        System.out.println();System.out.println();System.out.println();System.out.println();System.out.println();
+        System.out.println();System.out.println();System.out.println();System.out.println();System.out.println();
+        System.out.println("*****************************************");
+        System.out.println("\t\tNim Game");
+        System.out.println();
+        for(int index = 0; index < players.length; index++){
+            System.out.println("Players Name: \t" +players[index].getPlayerName());
         }
-
-        // Condition to return
-        if (option.equalsIgnoreCase("Y"))
-            return true;
-        else
-            return false;
-
+        System.out.println("First Turn: "+ first.getPlayerName());
+        System.out.println("Heap Size: "+ HeapSize);
+        System.out.println("*****************************************");   
     }
     
     // Linear-search function to find the index of an element 

@@ -72,7 +72,10 @@ public class AIPlayer extends Player{
 	@Override
     public Move makeMove(Board board) {
 		// Display the prompt and board
-        System.out.println("\n---------\nA.I. turn:");
+		System.out.println();
+        System.out.println("---------");
+		System.out.println("A.I. turn:");
+		System.out.println();
         
         board.display();
         
@@ -110,6 +113,9 @@ public class AIPlayer extends Player{
     	// Create the random
         Random gen = new Random();
         int heapIndex = gen.nextInt(board.getHeaps().size());
+		while (board.getHeaps().get(heapIndex) == 0){
+			heapIndex = gen.nextInt(board.getHeaps().size());
+		}
         int objectsToRemove = gen.nextInt(board.getHeaps().get(heapIndex)) + 1;
         return new Move(heapIndex, objectsToRemove);
     }

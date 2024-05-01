@@ -43,14 +43,14 @@ public class NimGameTest {
             System.out.println("                      Quit (enter \"Q\")");
             System.out.println("-----------------------------------------------------------");
             System.out.print("                    Enter your option: ");
-            String option = scan.next();
+            String option = scan.nextLine();
 
             // Check user input
             while (!option.equalsIgnoreCase("N") && !option.equalsIgnoreCase("Q")){
                 System.out.println("Invalid input!");
                 System.out.println();
-                System.out.print("Enter your option: ");
-                option = scan.next();
+                System.out.print("                    Enter your option: ");
+                option = scan.nextLine();
             }
             
             System.out.println();
@@ -101,7 +101,9 @@ public class NimGameTest {
                 if(winner == null){
                     break;
                 }
-                System.out.println("\n\nWinner is: " + winner.getPlayerName());
+                System.out.println();
+                System.out.println();
+                System.out.println("Winner is: " + winner.getPlayerName());
                 System.out.println();
                 
                 // Update player's score
@@ -115,7 +117,7 @@ public class NimGameTest {
                 	leaderboard.addHumanPlayer(mainGame.getPlayers()[l_index]);
                 
                 // Display the leaderboard
-                leaderboard.display(leaderboard.getPlayers().size());
+                leaderboard.display(leaderboard.getPlayers().size(), scan);
                 
                 System.out.println();
                 System.out.println();

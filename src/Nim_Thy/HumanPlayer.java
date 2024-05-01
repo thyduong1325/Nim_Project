@@ -25,7 +25,9 @@ public class HumanPlayer extends Player{
         Scanner scanner = new Scanner(System.in);
 
         // Display the prompt and board
-        System.out.println("\n---------\nYour turn, " + super.getPlayerName() + ":");
+        System.out.println();
+        System.out.println("---------");
+        System.out.println("Your turn, " + super.getPlayerName() + ":");
         System.out.println();
         board.display();
         System.out.println();
