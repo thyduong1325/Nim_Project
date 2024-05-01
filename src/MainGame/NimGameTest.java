@@ -124,10 +124,10 @@ public class NimGameTest {
         
         // Display the end prompt
         System.out.println("===========================================================");
-        System.out.println("        THANK YOU FOR PLAYING");
-        System.out.println("=======================================");
-        System.out.println("         CISC 230 project 1");
-        System.out.println("     Created by Anh, Emely, Thy");
+        System.out.println("                  THANK YOU FOR PLAYING");
+        System.out.println("===========================================================");
+        System.out.println("                   CISC 230 project 1");
+        System.out.println("               Created by Anh, Emely, Thy");
         
     }
 
