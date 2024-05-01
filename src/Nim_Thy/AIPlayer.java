@@ -72,7 +72,7 @@ public class AIPlayer extends Player{
 	@Override
     public Move makeMove(Board board) {
 		// Display the prompt and board
-        System.out.println("A.I. turn:");
+        System.out.println("\nA.I. turn:");
         
         board.display();
         
