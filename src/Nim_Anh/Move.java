@@ -1,9 +1,17 @@
 package Nim_Anh;
-//Purpose of the Move Class:
-//This Move class provides a structured way to represent and manipulate moves within our game. 
-    //By encapsulating data (heap index and number of objects removed) and providing methods to access and modify this data, 
-    //the class promotes encapsulation and abstraction, making it easier to manage game moves within a larger game implementation.
-// This class represents a move in a game, specifically for a game like Nim where objects are removed from heaps.
+
+//************************************************************
+// File Name: Move.java            Author: Anh Bui
+//
+// Purpose: This Move class provides a structured way to represent 
+// and manipulate moves within our game. By encapsulating data 
+// (heap index and number of objects removed) and providing methods 
+// to access and modify this data, the class promotes encapsulation 
+// and abstraction, making it easier to manage game moves within a 
+// larger game implementation. This class represents a move in a game,
+// specifically for a game like Nim where objects are removed from heaps.
+//************************************************************
+
 public class Move {
     private int HIndex; // The index of the heap from which objects are being removed
     private int numObjectsRemoved; // The number of objects (or stones) removed from the heap

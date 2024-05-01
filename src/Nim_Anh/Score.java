@@ -1,11 +1,20 @@
 package Nim_Anh;
-//Purpose of the Score Class:
-//The Score class encapsulates information about a player's score in a game. 
-//It allows for storing and retrieving the player's name, score value, and associated game ID. 
-//The class provides methods to access and modify this information, ensuring proper encapsulation and abstraction. 
-//The toString() method is overridden to generate a formatted string representation of the Score object, 
-//which can be useful for displaying or logging player scores.
-// This class represents a player's score in a game, including their name, score value, and optionally a game ID.
+
+//************************************************************
+// File Name: Score.java            Author: Anh Bui
+//
+// Purpose: The Score class encapsulates information about a 
+// player's score in a game. It allows for storing and retrieving 
+// the player's name, score value, and associated game ID. The 
+// class provides methods to access and modify this information, 
+// ensuring proper encapsulation and abstraction. The toString() 
+// method is overridden to generate a formatted string representation 
+// of the Score object, which can be useful for displaying or 
+// logging player scores. This class represents a player's score 
+// in a game, including their name, score value, and optionally a
+// game ID.
+//************************************************************
+
 public class Score {
     private String playerName; // The name of the player associated with the score
     private int score = 0; // The player's score initialized to zero

@@ -1,5 +1,15 @@
 package Nim_Emely;
 
+//************************************************************
+// File Name: Board.java            Author: Emely Cortez Hernandez
+//
+// Purpose: Represents the game board, which consists of a certain 
+// number of heaps or piles of objects (e.g., sticks, stones). This 
+// class includes methods for initializing the board, displaying
+// the current state, and updating the board after each turn.
+//************************************************************
+
+
 import java.util.ArrayList;
 
 public class Board {
