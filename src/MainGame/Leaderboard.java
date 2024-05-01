@@ -9,7 +9,6 @@ package MainGame;
 //************************************************************
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import Nim_Thy.Player;
 
