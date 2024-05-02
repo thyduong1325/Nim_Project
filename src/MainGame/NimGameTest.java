@@ -47,7 +47,7 @@ public class NimGameTest {
 
             // Check user input
             while (!option.equalsIgnoreCase("N") && !option.equalsIgnoreCase("Q")){
-                System.out.println("Invalid input!");
+                System.out.println("                     Invalid input!");
                 System.out.println();
                 System.out.print("                   Enter your option: ");
                 option = scan.nextLine();
@@ -138,8 +138,8 @@ public class NimGameTest {
         System.out.println("===========================================================");
         System.out.println("                   THANK YOU FOR PLAYING");
         System.out.println("===========================================================");
-        System.out.println("                    CISC 230 project 1");
-        System.out.println("                Created by Anh, Emely, Thy");
+        System.out.println("                     CISC 230 project 1");
+        System.out.println("                 Created by Anh, Emely, Thy");
         
     }
 
