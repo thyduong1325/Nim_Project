@@ -32,17 +32,17 @@ public class NimGameTest {
             System.out.println("===========================================================");
             System.out.println("                  WELCOME TO THE NIM GAME");
             System.out.println("===========================================================");
-            System.out.println("                       ! Game rule !");
+            System.out.println("                      ! Game rule !");
             System.out.println("! Remove the last object of the last heap to win the game !");
             System.out.println();
             
             // Display the Main Menu
-            System.out.println("                         Main Menu");
+            System.out.println("                        Main Menu");
             System.out.println("-----------------------------------------------------------");
             System.out.println("                    New Game (enter \"N\")");
             System.out.println("                      Quit (enter \"Q\")");
             System.out.println("-----------------------------------------------------------");
-            System.out.print("                    Enter your option: ");
+            System.out.print("                   Enter your option: ");
             String option = scan.nextLine();
 
             // Check user input
