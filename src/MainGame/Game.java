@@ -1,6 +1,6 @@
 package MainGame;
 //************************************************************
-// File Name: Game.java
+// File Name: Game.java                     Author: Team
 //
 // Purpose: This class manages the overall game flow and 
 // interactions between players. It includes methods for starting 

@@ -1,7 +1,7 @@
 package MainGame;
 
 //************************************************************
-// File Name: Leaderboard.java
+// File Name: Leaderboard.java               Author: Team
 //
 // Purpose: Manages the leaderboard, which stores information 
 // about players' scores and rankings. It includes methods for 
