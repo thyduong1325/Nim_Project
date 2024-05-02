@@ -228,11 +228,13 @@ public class Game{
         
         System.out.print("Player's ID: ");
         int id = scan.nextInt();
+        scan.nextLine();
         while (id == 0){
             System.out.println("Invalid input!");
             System.out.println();
             System.out.print("Player's ID: ");
             id = scan.nextInt();
+            scan.nextLine();
         }
         
         if (leaderboard.lookForOldPlayer(name, id) != -1) {
