@@ -237,7 +237,7 @@ public class Game{
             scan.nextLine();
         }
         
-        if (leaderboard.lookForOldPlayer(name, id) != -1) {
+        if (leaderboard.lookForOldPlayer(name, id) == -1) {
         	System.out.println("The Player doesn't exist! Please try again");
         	return null;
         }
