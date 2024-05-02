@@ -35,12 +35,18 @@ public class Leaderboard{
     }
 
     /**
-     * Adds a human player to the leaderboard.
-     * @param Player The human player to add.
+     * Update the leaderboard.
+     * @param Player The human player to be update.
      */
-    public void addHumanPlayer(Player Player){
-        this.players.add(Player);
+    public void updatePlayer(Player player){
+        if (lookForOldPlayer(player.getPlayerName(), player.getPlayerId()) == -1){
+            this.players.add(player);
+        }
+        else{
+            this.players.set(lookForOldPlayer(player.getPlayerName(), player.getPlayerId()), player);
+        }
     }
+
 
     /**
      * Retrieves the top players based on their scores.
@@ -96,7 +102,7 @@ public class Leaderboard{
         System.out.println();
         ArrayList<Player> top_n = getTopPlayer(numHumanPlayers);
         for (int rank = 1 ; rank <= top_n.size() ; rank++) {
-        	System.out.println("Rank " + rank + ": " + "ID: " + top_n.get(rank - 1).getPlayerId() + top_n.get(rank - 1).getScoreObject());
+        	System.out.println("Rank " + rank + ": " + "ID: " + top_n.get(rank - 1).getPlayerId() + "\n---------------------" + top_n.get(rank - 1).getScoreObject());
             System.out.println();
         }
     }

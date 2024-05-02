@@ -114,9 +114,9 @@ public class NimGameTest {
                 
                 // Update the leaderboard
                 if (!mainGame.getPlayers()[w_index].getPlayerName().equals("AI Player"))
-                	leaderboard.addHumanPlayer(mainGame.getPlayers()[w_index]);
+                	leaderboard.updatePlayer(mainGame.getPlayers()[w_index]);
                 if (!mainGame.getPlayers()[l_index].getPlayerName().equals("AI Player"))
-                	leaderboard.addHumanPlayer(mainGame.getPlayers()[l_index]);
+                	leaderboard.updatePlayer(mainGame.getPlayers()[l_index]);
                 
                 // Display the leaderboard
                 leaderboard.display(leaderboard.getPlayers().size());
