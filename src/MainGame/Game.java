@@ -211,10 +211,6 @@ public class Game{
     
     // logIn method
     public HumanPlayer logIn(Leaderboard leaderboard, Scanner scan) {
-    	if (leaderboard.getPlayers().size() == 0) {
-    		System.out.println("It seems like you don't have an account yet. Would you like to sign up instead?");
-    		return null;
-    	}
     	System.out.print("Name of Player: ");
         String name = scan.nextLine().trim();
         while (name.isEmpty()){
@@ -237,9 +233,29 @@ public class Game{
             scan.nextLine();
         }
         
-        if (leaderboard.lookForOldPlayer(name, id) == -1) {
+        while (leaderboard.lookForOldPlayer(name, id) == -1) {
         	System.out.println("The Player doesn't exist! Please try again");
-        	return null;
+        	System.out.print("Name of Player: ");
+            name = scan.nextLine().trim();
+            while (name.isEmpty()){
+                System.out.println("Invalid input!");
+                System.out.println();
+                System.out.println("Name of Player: ");
+                name = scan.nextLine().trim();
+            }
+            
+            System.out.println();
+            
+            System.out.print("Player's ID: ");
+            id = scan.nextInt();
+            scan.nextLine();
+            while (id == 0){
+                System.out.println("Invalid input!");
+                System.out.println();
+                System.out.print("Player's ID: ");
+                id = scan.nextInt();
+                scan.nextLine();
+            }
         }
         
         return (HumanPlayer) leaderboard.getPlayers().get(leaderboard.lookForOldPlayer(name, id));
