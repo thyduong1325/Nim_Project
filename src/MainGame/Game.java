@@ -235,6 +235,7 @@ public class Game{
         
         while (leaderboard.lookForOldPlayer(name, id) == -1) {
         	System.out.println("The Player doesn't exist! Please try again");
+            System.out.println();
         	System.out.print("Name of Player: ");
             name = scan.nextLine().trim();
             while (name.isEmpty()){
