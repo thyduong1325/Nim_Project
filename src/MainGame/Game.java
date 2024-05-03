@@ -216,7 +216,7 @@ public class Game{
         while (name.isEmpty()){
             System.out.println("Invalid input!");
             System.out.println();
-            System.out.println("Name of Player: ");
+            System.out.print("Name of Player: ");
             name = scan.nextLine().trim();
         }
         
@@ -241,7 +241,7 @@ public class Game{
             while (name.isEmpty()){
                 System.out.println("Invalid input!");
                 System.out.println();
-                System.out.println("Name of Player: ");
+                System.out.print("Name of Player: ");
                 name = scan.nextLine().trim();
             }
             
