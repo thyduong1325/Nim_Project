@@ -147,21 +147,25 @@ public class NimGameTest {
                 }
 
                 // Option Display all the players
-
                 if (l_option.equalsIgnoreCase("A"))
                     leaderboard.display(leaderboard.getPlayers().size());
+                
+                // Option Display top players
                 else if (l_option.equalsIgnoreCase("T")){
                     System.out.print("Enter number of players: ");
                     int top_n = scan.nextInt();
                     scan.nextLine();
+
                     // Check user input
-                    while (top_n <= 0 && top_n > leaderboard.getPlayers().size()){
+                    while (top_n <= 0 || top_n > leaderboard.getPlayers().size()){
                         System.out.println("Invalid input!");
                         System.out.println();
                         System.out.print("Enter number of players: ");
                         top_n = scan.nextInt();
                         scan.nextLine();
                     }
+
+                    leaderboard.display(top_n);
                 }
 
             }
