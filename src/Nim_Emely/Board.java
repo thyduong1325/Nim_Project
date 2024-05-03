@@ -14,21 +14,33 @@ import java.util.ArrayList;
 
 public class Board {
     private ArrayList<Integer> heaps;  // Declare an ArrayList to store the number of objects in each heap.
+    int max; // Declare the max value of the arraylist
+    int[] heapSpace;
 
     // Constructor to initialize the board with the number of objects per heap
     public Board(ArrayList<Integer> initialHeaps) {
         this.heaps = new ArrayList<>(initialHeaps);  // Create a new ArrayList from another to ensure it's a separate object.
+        this.max = heaps.get(heaps.size() - 1); // Create the max value of the arraylist
+        this.heapSpace = new int[heaps.size()];
+        for (int i = 0; i < heapSpace.length; i++){
+            heapSpace[i] = (int) ((max - heaps.get(i)) / 2);
+        }
     }
 
     // Display the current state of the board
     public void display() {
         System.out.println("Current state of the board:");  // Print a header to show the board's current state.
         for (int i = 0; i < heaps.size(); i++) {  // Loop through each heap.
-            System.out.print("Heap " + (i + 1) + ": ");  // Print the number of objects in each heap using string concatenation.
-            int max = heaps.get(heaps.size() - 1);
-            String space = "    ";
+            System.out.print("Heap " + (i + 1) + ":   ");  // Print the number of objects in each heap using string concatenation.
+            if (heaps.get(i) == 0)
+                    System.out.println();
+            else
+                System.out.print("    ".repeat(heapSpace[i]));
             for (int j = 0; j < heaps.get(i); j++){
-                System.out.println(space.repeat(max - heaps.get(i)) + "|");
+                if (j == heaps.get(i) -1)
+                    System.out.println("|");
+                else
+                    System.out.print(String.format("%-4s", "|"));
             }
         }
     }

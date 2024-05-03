@@ -12,7 +12,7 @@ import java.util.Random;
 import Nim_Anh.*;
 import Nim_Emely.*;
 
-public class Player {
+public abstract class Player {
 	// Create the random
 	Random gen = new Random();
 	
@@ -106,14 +106,5 @@ public class Player {
 	}
 
 	// Player make move
-	public Move makeMove(Board board){
-		// Create the random
-        Random gen = new Random();
-        int heapIndex = gen.nextInt(board.getHeaps().size());
-		while (board.getHeaps().get(heapIndex) == 0){
-			heapIndex = gen.nextInt(board.getHeaps().size());
-		}
-        int objectsToRemove = gen.nextInt(board.getHeaps().get(heapIndex)) + 1;
-        return new Move(heapIndex, objectsToRemove);
-	};
+	public abstract Move makeMove(Board board);
 }
