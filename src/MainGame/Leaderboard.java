@@ -100,9 +100,10 @@ public class Leaderboard{
         System.out.println("                        LEADERBOARD");
         System.out.println("-----------------------------------------------------------");
         System.out.println();
+        
         ArrayList<Player> top_n = getTopPlayer(numHumanPlayers);
         for (int rank = 1 ; rank <= top_n.size() ; rank++) {
-        	System.out.println("Rank " + rank + ": " + "ID: " + top_n.get(rank - 1).getPlayerId() + "\n---------------------" + top_n.get(rank - 1).getScoreObject());
+            System.out.println("Rank " + rank + ": " + "ID: " + top_n.get(rank - 1).getPlayerId() + "\n---------------------" + top_n.get(rank - 1).getScoreObject());
             System.out.println();
         }
     }

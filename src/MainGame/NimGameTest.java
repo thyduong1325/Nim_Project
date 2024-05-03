@@ -40,7 +40,7 @@ public class NimGameTest {
             System.out.println("                        Main Menu");
             System.out.println("-----------------------------------------------------------");
             System.out.println("                    New Game (enter \"N\")");
-            System.out.println("                   Leaderboard (enter \"L\")");
+            System.out.println("                  Leaderboard (enter \"L\")");
             System.out.println("                      Quit (enter \"Q\")");
             System.out.println("-----------------------------------------------------------");
             System.out.print("                   Enter your option: ");
@@ -130,44 +130,59 @@ public class NimGameTest {
 
             // Option 2: Leaderboard
             else if (option.equalsIgnoreCase("L")){
-                System.out.println("                        Leaderboard Menu");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println("                     Leaderboard Menu");
                 System.out.println("-----------------------------------------------------------");
-                System.out.println("                    All players (enter \"A\")");
-                System.out.println("                    Top players (enter \"T\")");
-                System.out.println("-----------------------------------------------------------");
-                System.out.print("                   Enter your option: ");
-                String l_option = scan.nextLine();
-
-                // Check user input
-                while (!l_option.equalsIgnoreCase("A") && !l_option.equalsIgnoreCase("T")){
-                    System.out.println("                     Invalid input!");
+                if (leaderboard.getPlayers().size() == 0){
+                    System.out.println("    Currently, there are no players on the leaderboard. ");
+                    System.out.println("         Start playing to see your name here!");
                     System.out.println();
-                    System.out.print("                   Enter your option: ");
-                    option = scan.nextLine();
                 }
-
-                // Option Display all the players
-                if (l_option.equalsIgnoreCase("A"))
-                    leaderboard.display(leaderboard.getPlayers().size());
-                
-                // Option Display top players
-                else if (l_option.equalsIgnoreCase("T")){
-                    System.out.print("Enter number of players: ");
-                    int top_n = scan.nextInt();
-                    scan.nextLine();
+                else{
+                    System.out.println("                  All players (enter \"A\")");
+                    System.out.println("                  Top players (enter \"T\")");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.print("                   Enter your option: ");
+                    String l_option = scan.nextLine();
 
                     // Check user input
-                    while (top_n <= 0 || top_n > leaderboard.getPlayers().size()){
-                        System.out.println("Invalid input!");
+                    while (!l_option.equalsIgnoreCase("A") && !l_option.equalsIgnoreCase("T")){
+                        System.out.println("                     Invalid input!");
                         System.out.println();
-                        System.out.print("Enter number of players: ");
-                        top_n = scan.nextInt();
-                        scan.nextLine();
+                        System.out.print("                   Enter your option: ");
+                        option = scan.nextLine();
                     }
 
-                    leaderboard.display(top_n);
-                }
+                    System.out.println();
 
+                    // Option Display all the players
+                    if (l_option.equalsIgnoreCase("A"))
+                        leaderboard.display(leaderboard.getPlayers().size());
+                    
+                    // Option Display top players
+                    else if (l_option.equalsIgnoreCase("T")){
+                        System.out.print("Enter number of players: ");
+                        int top_n = scan.nextInt();
+                        scan.nextLine();
+
+                        // Check user input
+                        while (top_n <= 0 || top_n > leaderboard.getPlayers().size()){
+                            System.out.println("Invalid input!");
+                            System.out.println();
+                            System.out.print("Enter number of players: ");
+                            top_n = scan.nextInt();
+                            scan.nextLine();
+                        }
+
+                        leaderboard.display(top_n);
+                    }
+                
+                }
+                System.out.println();
+                System.out.println();
+                System.out.println();
             }
 
             // Option 3: Quit
