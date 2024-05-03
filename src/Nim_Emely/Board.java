@@ -24,7 +24,12 @@ public class Board {
     public void display() {
         System.out.println("Current state of the board:");  // Print a header to show the board's current state.
         for (int i = 0; i < heaps.size(); i++) {  // Loop through each heap.
-            System.out.println("Heap " + (i + 1) + ": " + heaps.get(i) + " objects");  // Print the number of objects in each heap using string concatenation.
+            System.out.print("Heap " + (i + 1) + ": ");  // Print the number of objects in each heap using string concatenation.
+            int max = heaps.get(-1);
+            String space = "    ";
+            for (int j = 0; j < heaps.get(i); j++){
+                System.out.println(space.repeat(max - heaps.get(i)) + "|");
+            }
         }
     }
 
