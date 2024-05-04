@@ -19,15 +19,12 @@ public class NimGameTest {
         // Create the scanner
         Scanner scan = new Scanner(System.in);
 
-        // Create a sentinel
-        boolean continuePlaying = true;
-
         /*
             This loop is the game
             if continue playing is true the game will repeat using same players
             At the begining of each game you can select who first player is.
         */
-        while(continuePlaying){
+        while(true){
             // Display the welcome prompt
             System.out.println("===========================================================");
             System.out.println("                  WELCOME TO THE NIM GAME");
@@ -88,6 +85,11 @@ public class NimGameTest {
                 
                 // Winner is returned as a Player
                 Player winner = mainGame.play();
+
+                //Handeling a cancel
+                if(winner == null){
+                    continue;
+                }
                 
                 // Winner's index in Player array
                 int w_index = mainGame.findIndex(winner);
@@ -99,11 +101,6 @@ public class NimGameTest {
                 else
                 	l_index = 0;
                 
-                    
-                //Handeling a cancel
-                if(winner == null){
-                    break;
-                }
                 System.out.println();
                 System.out.println();
                 System.out.println("Winner is: " + winner.getPlayerName());
@@ -152,7 +149,7 @@ public class NimGameTest {
                         System.out.println("                     Invalid input!");
                         System.out.println();
                         System.out.print("                   Enter your option: ");
-                        option = scan.nextLine();
+                        l_option = scan.nextLine();
                     }
 
                     System.out.println();

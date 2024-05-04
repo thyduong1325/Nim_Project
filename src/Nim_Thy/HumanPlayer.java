@@ -50,6 +50,7 @@ public class HumanPlayer extends Player{
         // Take user input for number of objects
         System.out.print("Enter number of objects to remove (-1 to give up): ");
         int objectsToRemove = scan.nextInt();
+        scan.nextLine();
 
         // Check user input
         while (objectsToRemove < -1 || objectsToRemove > board.getHeaps().get(heapIndex)){
@@ -57,6 +58,7 @@ public class HumanPlayer extends Player{
             System.out.println();
             System.out.print("Enter number of objects to remove (-1 to give up): ");
             objectsToRemove = scan.nextInt();
+            scan.nextLine();
         }
 
         while (objectsToRemove == 0){
@@ -64,10 +66,10 @@ public class HumanPlayer extends Player{
             System.out.println();
             System.out.print("Enter number of objects to remove (-1 to give up): ");
             objectsToRemove = scan.nextInt();
+            scan.nextLine();
         }
         
         if (objectsToRemove == -1){
-            scan.close();
             return null;
         }
         return new Move(heapIndex, objectsToRemove);
