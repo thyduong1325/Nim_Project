@@ -30,7 +30,14 @@ public class NimGameTest {
             System.out.println("                  WELCOME TO THE NIM GAME");
             System.out.println("===========================================================");
             System.out.println("                      ! Game rule !");
-            System.out.println("! Remove the last object of the last heap to win the game !");
+            System.out.println("!   1) Players take turns removing objects from one heap  !");
+            System.out.println("!   2)  On each turn, a player must remove at least       !");
+            System.out.println("!             one object from the chosen heap             !");
+            System.out.println("!   3) Players can remove as many objects as they want    !");
+            System.out.println("!       from the chosen heap, but they cannot             !");
+            System.out.println("!  skip their turn or remove objects from multiple heaps  !");
+            System.out.println("!   4) The player who removes the last object from        !");
+            System.out.println("!               the last heap wins the game               !");
             System.out.println();
             
             // Display the Main Menu
@@ -88,7 +95,7 @@ public class NimGameTest {
 
                 //Handeling a cancel
                 if(winner == null){
-                    System.out.println(option);
+                    System.out.println();
                     continue;
                 }
                 
