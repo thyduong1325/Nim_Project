@@ -88,6 +88,7 @@ public class NimGameTest {
 
                 //Handeling a cancel
                 if(winner == null){
+                    System.out.println(option);
                     continue;
                 }
                 
