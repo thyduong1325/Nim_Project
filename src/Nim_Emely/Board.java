@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class Board {
     private ArrayList<Integer> heaps;  // Declare an ArrayList to store the number of objects in each heap.
-    int max; // Declare the max value of the arraylist
-    int[] heapSpace;
+    private int max; // Declare the max value of the arraylist
+    private int[] heapSpace;
 
     // Constructor to initialize the board with the number of objects per heap
     public Board(ArrayList<Integer> initialHeaps) {
