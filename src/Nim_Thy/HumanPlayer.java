@@ -19,7 +19,7 @@ public class HumanPlayer extends Player{
 	}
 	
 	// The player take turn and make move
-    @Override
+    	@Override
 	public Move makeMove(Board board) {
         // Create the scanner
         Scanner scan = new Scanner(System.in);
